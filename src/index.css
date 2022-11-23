@@ -1,13 +1,28 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+.body {
+  background-image: url("../src/img/credit-card.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.body__main {
+  font-family: Roboto, sans-serif;
+  flex-basis: 900px;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(229, 234, 240, 0.91);
+  box-shadow: 5px 5px 24px -10px rgb(31, 32, 44);
+  border-radius: 20px;
 }
