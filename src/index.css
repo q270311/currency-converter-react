@@ -10,13 +10,14 @@ html {
 
 .body {
   background-image: url("../src/img/credit-card.jpg");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
+
 .body__main {
   font-family: Roboto, sans-serif;
   flex-basis: 900px;
