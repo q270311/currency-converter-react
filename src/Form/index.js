@@ -6,6 +6,9 @@ const Form = () => {
     const [inputCurrencySymbol, setInputCurrencySymbol] = useState("EUR");
     const [outputCurrencyRate, setOutputCurrencyRate] = useState("4.8606");
     const [outputCurrencySymbol, setOutputCurrencySymbol] = useState("EUR");
+    const [currencyValue, setCurrencyValue] = useState("");
+    const [calculation, calculate] = useState("");
+
     const onSelectInputChange = ({ target }) => {
         setInputCurrencyRate(target.value);
         setInputCurrencySymbol(target.options[target.selectedIndex].text);
@@ -16,9 +19,6 @@ const Form = () => {
         setOutputCurrencySymbol(target.options[target.selectedIndex].text);
         calculate("");
     }
-    const [currencyValue, setCurrencyValue] = useState("");
-    const [calculation, calculate] = useState("");
-
     const onFormSubmit = (event) => {
         event.preventDefault();
         calculate((currencyValue * inputCurrencyRate / outputCurrencyRate).toFixed(2));
@@ -32,7 +32,6 @@ const Form = () => {
         setOutputCurrencySymbol(tmpSymbol);
         calculate("");
     }
-
     const Result = () => (
         currencyValue !== "" && (
             <p className="form__paragraph--result">
