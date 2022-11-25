@@ -8,7 +8,8 @@ html {
   box-sizing: inherit;
 }
 
-.body {
+body {
+  font-family: Roboto, sans-serif;
   background-image: url("../src/img/credit-card.jpg");
   background-size: cover;
   background-position: center;
@@ -18,12 +19,3 @@ html {
   min-height: 100vh;
 }
 
-.body__main {
-  font-family: Roboto, sans-serif;
-  flex-basis: 900px;
-  padding: 10px;
-  margin: 10px;
-  background-color: rgba(229, 234, 240, 0.91);
-  box-shadow: 5px 5px 24px -10px rgb(31, 32, 44);
-  border-radius: 20px;
-}
