@@ -1,0 +1,89 @@
+.form {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.form__label {
+    font-size: 20px;
+    margin: 20px 10px;
+}
+
+.form__element {
+    color: #3c3d3f;
+    width: 150px;
+    border-radius: 10px;
+    height: 35px;
+    margin: 10px 0px;
+}
+
+.form__element--button {
+    background-color: #3434ec;
+    margin-top: 50px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.form__element--button:hover {
+    background-color: #8585f3;
+    margin-top: 50px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.form__element--currencySwitch {
+    margin-top: 50px;
+    padding-top: 5px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.form__element--currencySwitch:hover {
+    background-color: #8585f3;
+}
+
+.form__paragraph--result {
+    font-size: 50px;
+    text-align: center;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    border: 3px solid #3434ec;
+}
+
+@media (max-width: 767px) {
+    .form {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form__label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: lefr;
+        width: 95%;
+    }
+
+    .form__element {
+        color: #3c3d3f;
+        width: 95%;
+        margin-left: 20px;
+    }
+
+    .form__element--arrows {
+        width: 95%;
+    }
+}

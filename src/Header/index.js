@@ -1,5 +1,6 @@
+import "./style.css";
 const Header = ({ title }) => (
-    <header>
+    <header className="header">
         <h1>{title}</h1>
     </header>
 );
