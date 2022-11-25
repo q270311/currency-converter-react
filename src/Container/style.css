@@ -1,5 +1,13 @@
-.main {    
-    max-width: 900px;
+.main{
+    width: 900px;
     padding: 10px;
-    margin: 10px auto;
-}
+    margin: 20px;
+    background-color: rgba(229, 234, 240, 0.91);
+    box-shadow: 5px 5px 24px -10px rgb(31, 32, 44);
+    border-radius: 20px;
+  }
+  @media (max-width: 767px) {
+    .main{
+      width: 100%;
+    }
+} 
