@@ -14,7 +14,7 @@
 
 .form__element {
     color: #3c3d3f;
-    width: 150px;
+    width: 200px;
     border-radius: 10px;
     height: 35px;
     margin: 10px 0px;
@@ -23,6 +23,7 @@
 .form__element--button {
     background-color: #3434ec;
     margin-top: 50px;
+    width:100px;
     color: white;
     font-weight: 700;
     cursor: pointer;
