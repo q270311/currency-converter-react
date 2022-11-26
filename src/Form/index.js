@@ -3,21 +3,21 @@ import { currencies } from "../currencies";
 import "./style.css";
 
 const Form = () => {
-    const [inputCurrencyRate, setInputCurrencyRate] = useState(currencies[0].rate);
+
     const [inputCurrencySymbol, setInputCurrencySymbol] = useState(currencies[0].short);
-    const [outputCurrencyRate, setOutputCurrencyRate] = useState(currencies[1].rate);
     const [outputCurrencySymbol, setOutputCurrencySymbol] = useState(currencies[1].short);
     const [currencyValue, setCurrencyValue] = useState("");
     const [calculation, calculate] = useState("");
 
+    const inputCurrencyRate = currencies.find(({ short }) => short === inputCurrencySymbol).rate;
+    const outputCurrencyRate = currencies.find(({ short }) => short === outputCurrencySymbol).rate;
+
     const onSelectInputChange = ({ target }) => {
-        setInputCurrencyRate(target.value);
-        setInputCurrencySymbol(target.options[target.selectedIndex].text);
+        setInputCurrencySymbol(target.value);
         calculate("");
     }
     const onSelectOutputChange = ({ target }) => {
-        setOutputCurrencyRate(target.value);
-        setOutputCurrencySymbol(target.options[target.selectedIndex].text);
+        setOutputCurrencySymbol(target.value);
         calculate("");
     }
     const onFormSubmit = (event) => {
@@ -25,9 +25,6 @@ const Form = () => {
         calculate((currencyValue * inputCurrencyRate / outputCurrencyRate).toFixed(2));
     }
     const swapCurrencies = () => {
-        const tmpRate = inputCurrencyRate;
-        setInputCurrencyRate(outputCurrencyRate);
-        setOutputCurrencyRate(tmpRate);
         const tmpSymbol = inputCurrencySymbol;
         setInputCurrencySymbol(outputCurrencySymbol);
         setOutputCurrencySymbol(tmpSymbol);
@@ -49,7 +46,7 @@ const Form = () => {
                         type="number" required min="0" step="0.01" placeholder="Wpisz kwotę"
                         className="form__element"
                         value={currencyValue}
-                        onChange={({target}) => {
+                        onChange={({ target }) => {
                             setCurrencyValue(target.value);
                             calculate((target.value * inputCurrencyRate / outputCurrencyRate).toFixed(2));
                         }
@@ -57,14 +54,14 @@ const Form = () => {
                     />
                 </label>
                 <label className="form__label">Mam:<br />
-                    <select className="form__element" value={inputCurrencyRate} onChange={onSelectInputChange}>
+                    <select className="form__element" value={inputCurrencySymbol} onChange={onSelectInputChange}>
                         {
                             currencies.map((currency => (
                                 <option
                                     key={currency.short}
-                                    value={currency.rate}
+                                    value={currency.short}
                                 >
-                                    {currency.short}
+                                    {currency.name}
                                 </option>
                             )))
                         }
@@ -79,14 +76,14 @@ const Form = () => {
                 </span>
 
                 <label className="form__label">Chcę otrzymać:<br />
-                    <select className="form__element" value={outputCurrencyRate} onChange={onSelectOutputChange}>
+                    <select className="form__element" value={outputCurrencySymbol} onChange={onSelectOutputChange}>
                         {
                             currencies.map((currency => (
                                 <option
                                     key={currency.short}
-                                    value={currency.rate}
+                                    value={currency.short}
                                 >
-                                    {currency.short}
+                                    {currency.name}
                                 </option>
                             )))
                         }
