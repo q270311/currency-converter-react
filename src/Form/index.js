@@ -48,7 +48,11 @@ const Form = () => {
                         type="number" required min="0" step="0.01" placeholder="Wpisz kwotę"
                         className="form__element"
                         value={currencyValue}
-                        onChange={(event) => setCurrencyValue(event.target.value)}
+                        onChange={(event) => {
+                            setCurrencyValue(event.target.value);
+                            calculate((event.target.value * inputCurrencyRate / outputCurrencyRate).toFixed(2));
+                        }
+                        }
                     />
                 </label>
                 <label className="form__label">Mam:<br />
