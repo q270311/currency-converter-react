@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { currencies } from "../currencies";
 import "./style.css";
 
 const Form = () => {
-    const [inputCurrencyRate, setInputCurrencyRate] = useState("4.8606");
-    const [inputCurrencySymbol, setInputCurrencySymbol] = useState("EUR");
-    const [outputCurrencyRate, setOutputCurrencyRate] = useState("4.8606");
-    const [outputCurrencySymbol, setOutputCurrencySymbol] = useState("EUR");
+    const [inputCurrencyRate, setInputCurrencyRate] = useState(currencies[0].rate);
+    const [inputCurrencySymbol, setInputCurrencySymbol] = useState(currencies[0].short);
+    const [outputCurrencyRate, setOutputCurrencyRate] = useState(currencies[1].rate);
+    const [outputCurrencySymbol, setOutputCurrencySymbol] = useState(currencies[1].short);
     const [currencyValue, setCurrencyValue] = useState("");
     const [calculation, calculate] = useState("");
 
@@ -48,20 +49,25 @@ const Form = () => {
                         type="number" required min="0" step="0.01" placeholder="Wpisz kwotę"
                         className="form__element"
                         value={currencyValue}
-                        onChange={(event) => {
-                            setCurrencyValue(event.target.value);
-                            calculate((event.target.value * inputCurrencyRate / outputCurrencyRate).toFixed(2));
+                        onChange={({target}) => {
+                            setCurrencyValue(target.value);
+                            calculate((target.value * inputCurrencyRate / outputCurrencyRate).toFixed(2));
                         }
                         }
                     />
                 </label>
                 <label className="form__label">Mam:<br />
                     <select className="form__element" value={inputCurrencyRate} onChange={onSelectInputChange}>
-                        <option value="4.8606">EUR</option>
-                        <option value="4.9588">USD</option>
-                        <option value="5.0065">CHF</option>
-                        <option value="5.5505">GBP</option>
-                        <option value="1.0">PLN</option>
+                        {
+                            currencies.map((currency => (
+                                <option
+                                    key={currency.short}
+                                    value={currency.rate}
+                                >
+                                    {currency.short}
+                                </option>
+                            )))
+                        }
                     </select>
                 </label>
 
@@ -74,11 +80,16 @@ const Form = () => {
 
                 <label className="form__label">Chcę otrzymać:<br />
                     <select className="form__element" value={outputCurrencyRate} onChange={onSelectOutputChange}>
-                        <option value="4.8606">EUR</option>
-                        <option value="4.9588">USD</option>
-                        <option value="5.0065">CHF</option>
-                        <option value="5.5505">GBP</option>
-                        <option value="1.0">PLN</option>
+                        {
+                            currencies.map((currency => (
+                                <option
+                                    key={currency.short}
+                                    value={currency.rate}
+                                >
+                                    {currency.short}
+                                </option>
+                            )))
+                        }
                     </select>
                 </label>
                 <input type="submit" value="Przelicz" className="form__element form__element--button" />
