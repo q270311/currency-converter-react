@@ -1,5 +1,6 @@
 .clock{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: monospace;
     padding: 20px;
     text-align: right;
+    font-size: 15px;
 }
