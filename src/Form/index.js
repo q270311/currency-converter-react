@@ -7,35 +7,43 @@ const Form = () => {
     const [inputCurrencySymbol, setInputCurrencySymbol] = useState(currencies[0].short);
     const [outputCurrencySymbol, setOutputCurrencySymbol] = useState(currencies[1].short);
     const [currencyValue, setCurrencyValue] = useState("");
-    const [calculation, calculate] = useState("");
+    const [result, setResult] = useState("");
 
     const inputCurrencyRate = currencies.find(({ short }) => short === inputCurrencySymbol).rate;
     const outputCurrencyRate = currencies.find(({ short }) => short === outputCurrencySymbol).rate;
 
     const onSelectInputChange = ({ target }) => {
         setInputCurrencySymbol(target.value);
-        calculate("");
     }
     const onSelectOutputChange = ({ target }) => {
         setOutputCurrencySymbol(target.value);
-        calculate("");
     }
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculate((currencyValue * inputCurrencyRate / outputCurrencyRate).toFixed(2));
+        setResult(calculateResult());
     }
     const swapCurrencies = () => {
         const tmpSymbol = inputCurrencySymbol;
         setInputCurrencySymbol(outputCurrencySymbol);
         setOutputCurrencySymbol(tmpSymbol);
-        calculate("");
     }
-    const Result = () => (
-        currencyValue !== "" && (
+    const calculateResult = () => (        
+        {
+            currencyValue: currencyValue,
+            inputCurrencySymbol: inputCurrencySymbol,
+            inputCurrencyRate: inputCurrencyRate,
+            outputCurrencySymbol: outputCurrencySymbol,
+            outputCurrencyRate: outputCurrencyRate,
+            calculateValue: (currencyValue * inputCurrencyRate / outputCurrencyRate).toFixed(2),
+        }
+    );
+    const Result = ({ result }) => (
+        (!!result) && (
             <p className="form__paragraph--result">
-                {currencyValue} {inputCurrencySymbol} = <strong>{calculation} {outputCurrencySymbol}</strong>
+                {result.currencyValue} {result.inputCurrencySymbol} = <strong>{result.calculateValue} {result.outputCurrencySymbol}</strong>
             </p>
         )
+
     );
 
     return (
@@ -48,7 +56,7 @@ const Form = () => {
                         value={currencyValue}
                         onChange={({ target }) => {
                             setCurrencyValue(target.value);
-                            calculate((target.value * inputCurrencyRate / outputCurrencyRate).toFixed(2));
+                            //    calculate((target.value * inputCurrencyRate / outputCurrencyRate).toFixed(2));
                         }
                         }
                     />
@@ -91,7 +99,7 @@ const Form = () => {
                 </label>
                 <input type="submit" value="Przelicz" className="form__element form__element--button" />
             </form>
-            <Result />
+            <Result result={result} />
         </main>
     );
 };
