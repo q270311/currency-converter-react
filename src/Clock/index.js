@@ -11,11 +11,11 @@ const formatDate = (date) => date.toLocaleDateString(undefined, {
 });
 
 const Clock = () => {
-    const [myDate, refreshDate] = useState(new Date());
+    const [currencyDate, setCurrencyDate] = useState(new Date());
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            refreshDate(new Date());
+            setCurrencyDate(new Date());
         }, 1000);
         return () => {
             clearInterval(intervalId);
@@ -24,7 +24,7 @@ const Clock = () => {
 
     return (
         <div className="clock">
-            Dzisiaj jest {formatDate(myDate)}
+            Dzisiaj jest {formatDate(currencyDate)}
         </div>
     );
 };
