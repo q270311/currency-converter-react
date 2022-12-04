@@ -1,9 +1,9 @@
-import "./style.css";
+import {Main} from "./stuled";
 
 const Container = ({ children }) => (
-    <main className="main">
+    <Main>
         {children}
-    </main>
+    </Main>
 );
 
 export default Container;
