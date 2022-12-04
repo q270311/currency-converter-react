@@ -22,6 +22,8 @@ Calculation result is displayed up to two decimal place
  - JavaScript
  - ES6+ features
  - React.js
+ - React Hooks: useState, useEffect, useRef, own Reaact Hooks
+ - Styled components
 ## Available Scripts
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
