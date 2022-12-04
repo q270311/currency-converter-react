@@ -95,6 +95,7 @@ export const CurrencyChangeSpan = styled(Span)`
 export const CurrencyChang = styled.div`
     width: 100px;
     margin: 50px 0px 10px 0px;
+    
     @media (max-width: 767px) {
         width: 95%;
     }; 
