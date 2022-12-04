@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { currencies } from "../currencies";
-import { Shape, Label, Select, Input, CurrencyChangeSpan, P } from "./styled";
+import { Shape, Label, Select, Input, CurrencyChang, CurrencyChangeSpan, P } from "./styled";
 
 const Form = () => {
 
@@ -73,11 +73,9 @@ const Form = () => {
                     </Select>
                 </Label>
 
-                <CurrencyChangeSpan
-                    onClick={swapCurrencies}
-                >
-                    sync_alt
-                </CurrencyChangeSpan>
+                <CurrencyChang onClick={swapCurrencies}>
+                    <CurrencyChangeSpan > sync_alt </CurrencyChangeSpan>
+                </CurrencyChang>
 
                 <Label>Chcę otrzymać:<br />
                     <Select value={outputCurrencySymbol} onChange={onSelectOutputChange}>

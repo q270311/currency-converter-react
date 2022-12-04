@@ -68,32 +68,37 @@ export const Input = styled.input`
             font-weight: 700;
             cursor: pointer;
         };
-    `};    
+    `};  
 `;
+
 const Span = ({ className }) => (
     <span className={`material-symbols-outlined ${className}`}>sync_alt</span>
 );
 
 export const CurrencyChangeSpan = styled(Span)`
     color: #3c3d3f;
-    width: 200px;
+    width: 100%;
     height: 35px;
     border: 3px solid #3434ec;
-    border-radius: 10px;    
-    margin: 50px 0px 10px 0px;
+    border-radius: 10px;        
     padding-top: 5px;
     cursor: pointer;
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
     text-align: center;
-    vertical-align: middle;    
+    vertical-align: middle; 
 
+    &:hover{
+        background-color: #8585f3;
+    };
+`;
+
+export const CurrencyChang = styled.div`
+    width: 100px;
+    margin: 50px 0px 10px 0px;
     @media (max-width: 767px) {
         width: 95%;
     }; 
     
-    &:hover{
-        background-color: #8585f3;
-    };
 `;
 
 export const P = styled.p`
