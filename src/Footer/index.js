@@ -1,8 +1,8 @@
-import "./style.css";
+import {P} from "./styled";
 
 const Footer = ({ value }) => (
-    <footer className="footer">
-        <p className="footer__paragraph">{value}</p>
+    <footer>
+        <P>{value}</P>
     </footer>
 );
 
