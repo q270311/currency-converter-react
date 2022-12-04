@@ -1,4 +1,4 @@
-import styled, { css }  from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Shape = styled.form`
     display: flex;
@@ -70,10 +70,10 @@ export const Input = styled.input`
         };
     `};    
 `;
-const Span = ({className}) => (
+const Span = ({ className }) => (
     <span className={`material-symbols-outlined ${className}`}>sync_alt</span>
-   );
-   
+);
+
 export const CurrencyChangeSpan = styled(Span)`
     color: #3c3d3f;
     width: 200px;
@@ -95,7 +95,7 @@ export const CurrencyChangeSpan = styled(Span)`
         background-color: #8585f3;
     };
 `;
-    
+
 export const P = styled.p`
     font-size: 50px;
     text-align: center;

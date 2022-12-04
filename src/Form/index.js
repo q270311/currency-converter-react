@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { currencies } from "../currencies";
-import {Shape, Label, Select, Input, CurrencyChangeSpan, P} from "./styled";
+import { Shape, Label, Select, Input, CurrencyChangeSpan, P } from "./styled";
 
 const Form = () => {
 
@@ -27,7 +27,7 @@ const Form = () => {
         setInputCurrencySymbol(outputCurrencySymbol);
         setOutputCurrencySymbol(tmpSymbol);
     }
-    const calculateResult = () => (        
+    const calculateResult = () => (
         {
             currencyValue: currencyValue,
             inputCurrencySymbol: inputCurrencySymbol,
@@ -55,7 +55,7 @@ const Form = () => {
                         value={currencyValue}
                         onChange={({ target }) => {
                             setCurrencyValue(target.value);
-                        } }
+                        }}
                     />
                 </Label>
                 <Label>Mam:<br />
