@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { currencies } from "../currencies";
-import "./style.css";
+import {Shape, Label, Select, Input, CurrencyChangeSpan, P} from "./styled";
 
 const Form = () => {
 
@@ -39,30 +39,27 @@ const Form = () => {
     );
     const Result = ({ result }) => (
         (!!result) && (
-            <p className="form__paragraph--result">
+            <P>
                 {result.currencyValue} {result.inputCurrencySymbol} = <strong>{result.calculateValue} {result.outputCurrencySymbol}</strong>
-            </p>
+            </P>
         )
 
     );
 
     return (
         <main>
-            <form className="form" onSubmit={onFormSubmit}>
-                <label className="form__label">Kwota*:<br />
-                    <input
+            <Shape onSubmit={onFormSubmit}>
+                <Label>Kwota*:<br />
+                    <Input
                         type="number" required min="0" step="0.01" placeholder="Wpisz kwotę"
-                        className="form__element"
                         value={currencyValue}
                         onChange={({ target }) => {
                             setCurrencyValue(target.value);
-                            //    calculate((target.value * inputCurrencyRate / outputCurrencyRate).toFixed(2));
-                        }
-                        }
+                        } }
                     />
-                </label>
-                <label className="form__label">Mam:<br />
-                    <select className="form__element" value={inputCurrencySymbol} onChange={onSelectInputChange}>
+                </Label>
+                <Label>Mam:<br />
+                    <Select value={inputCurrencySymbol} onChange={onSelectInputChange}>
                         {
                             currencies.map((currency => (
                                 <option
@@ -73,18 +70,17 @@ const Form = () => {
                                 </option>
                             )))
                         }
-                    </select>
-                </label>
+                    </Select>
+                </Label>
 
-                <span
-                    className="material-symbols-outlined form__element form__element--currencySwitch"
+                <CurrencyChangeSpan
                     onClick={swapCurrencies}
                 >
                     sync_alt
-                </span>
+                </CurrencyChangeSpan>
 
-                <label className="form__label">Chcę otrzymać:<br />
-                    <select className="form__element" value={outputCurrencySymbol} onChange={onSelectOutputChange}>
+                <Label>Chcę otrzymać:<br />
+                    <Select value={outputCurrencySymbol} onChange={onSelectOutputChange}>
                         {
                             currencies.map((currency => (
                                 <option
@@ -95,10 +91,10 @@ const Form = () => {
                                 </option>
                             )))
                         }
-                    </select>
-                </label>
-                <input type="submit" value="Przelicz" className="form__element form__element--button" />
-            </form>
+                    </Select>
+                </Label>
+                <Input type="submit" value="Przelicz" />
+            </Shape>
             <Result result={result} />
         </main>
     );
