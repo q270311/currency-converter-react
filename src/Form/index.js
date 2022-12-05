@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { currencies } from "../currencies";
-import { Shape, Label, Select, Input, CurrencyChang, CurrencyChangeSpan, P } from "./styled";
+import { Shape, Label, Select, Input, CurrencyChang, CurrencyChangeSpan, StyledP } from "./styled";
 
 const Form = () => {
-
     const [inputCurrencySymbol, setInputCurrencySymbol] = useState(currencies[0].short);
     const [outputCurrencySymbol, setOutputCurrencySymbol] = useState(currencies[1].short);
     const [currencyValue, setCurrencyValue] = useState("");
@@ -39,9 +38,9 @@ const Form = () => {
     );
     const Result = ({ result }) => (
         (!!result) && (
-            <P>
+            <StyledP>
                 {result.currencyValue} {result.inputCurrencySymbol} = <strong>{result.calculateValue} {result.outputCurrencySymbol}</strong>
-            </P>
+            </StyledP>
         )
 
     );

@@ -102,7 +102,7 @@ export const CurrencyChang = styled.div`
     
 `;
 
-export const P = styled.p`
+export const StyledP = styled.p`
     font-size: 50px;
     text-align: center;
 `;
