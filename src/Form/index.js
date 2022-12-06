@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { currencies } from "../currencies";
 import { Shape, Label, Select, Input, CurrencyChang, CurrencyChangeSpan, StyledP } from "./styled";
+import { useCurrencies } from "./useCurrencies";
 
 const Form = () => {
+    const currencies = useCurrencies();
     const [inputCurrencySymbol, setInputCurrencySymbol] = useState(currencies[0].short);
     const [outputCurrencySymbol, setOutputCurrencySymbol] = useState(currencies[1].short);
     const [currencyValue, setCurrencyValue] = useState("");
