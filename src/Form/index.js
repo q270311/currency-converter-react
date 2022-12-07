@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Shape, Label, Select, Input, CurrencyChang, CurrencyChangeSpan, StyledP } from "./styled";
-import { useCurrencies } from "./useCurrencies";
+import { useCurrenciesData } from "./useCurrenciesData";
 
 const Form = () => {
-    const currencies = useCurrencies();
-    const [inputCurrencySymbol, setInputCurrencySymbol] = useState(currencies[0].short);
-    const [outputCurrencySymbol, setOutputCurrencySymbol] = useState(currencies[1].short);
+    const currenciesData = useCurrenciesData();
+
+    const [inputCurrencySymbol, setInputCurrencySymbol] = useState(currenciesData.currencies[0].short);
+    const [outputCurrencySymbol, setOutputCurrencySymbol] = useState(currenciesData.currencies[1].short);
     const [currencyValue, setCurrencyValue] = useState("");
     const [result, setResult] = useState("");
 
-    const inputCurrencyRate = currencies.find(({ short }) => short === inputCurrencySymbol).rate;
-    const outputCurrencyRate = currencies.find(({ short }) => short === outputCurrencySymbol).rate;
+    const inputCurrencyRate = currenciesData.currencies.find(({ short }) => short === inputCurrencySymbol).rate;
+    const outputCurrencyRate = currenciesData.currencies.find(({ short }) => short === outputCurrencySymbol).rate;
 
     const onSelectInputChange = ({ target }) => {
         setInputCurrencySymbol(target.value);
@@ -45,10 +46,9 @@ const Form = () => {
         )
 
     );
-
-    return (
-        <main>
-            <Shape onSubmit={onFormSubmit}>
+    const formBody = () => {
+        return (
+            <Fragment><Shape onSubmit={onFormSubmit}>
                 <Label>Kwota*:<br />
                     <Input
                         type="number" required min="0" step="0.01" placeholder="Wpisz kwotę"
@@ -61,12 +61,12 @@ const Form = () => {
                 <Label>Mam:<br />
                     <Select value={inputCurrencySymbol} onChange={onSelectInputChange}>
                         {
-                            currencies.map((currency => (
+                            currenciesData.currencies.map((currency => (
                                 <option
                                     key={currency.short}
                                     value={currency.short}
                                 >
-                                    {currency.name}
+                                    {currency.short}
                                 </option>
                             )))
                         }
@@ -80,12 +80,12 @@ const Form = () => {
                 <Label>Chcę otrzymać:<br />
                     <Select value={outputCurrencySymbol} onChange={onSelectOutputChange}>
                         {
-                            currencies.map((currency => (
+                            currenciesData.currencies.map((currency => (
                                 <option
                                     key={currency.short}
                                     value={currency.short}
                                 >
-                                    {currency.name}
+                                    {currency.short}
                                 </option>
                             )))
                         }
@@ -93,7 +93,16 @@ const Form = () => {
                 </Label>
                 <Input type="submit" value="Przelicz" />
             </Shape>
-            <Result result={result} />
+                <Result result={result} />
+            </Fragment>
+        );
+    };
+
+    return (
+        <main> 
+            {
+                currenciesData.status ? formBody() : currenciesData.message                
+            }
         </main>
     );
 };
