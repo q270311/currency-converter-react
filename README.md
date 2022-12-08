@@ -5,25 +5,30 @@ https://q270311.github.io/currency-converter-react/
 ## Description 
 Project implemented during the _Frontend Developer od podstaw_ course at the **YouCode** -  online programming school.
 
-This website will help you convert money from different currencies. You can choose from:
-- Euro
-- US Dollar
-- Swiss Franc and 
-- British Pound.
+This page will help you convert money from different currencies. You can choose:
+- Euros
+- Dollar
+- Swiss franc and
+- British Pound
+**and many others**.
 
-The **currency exchange rate is fixed and does not change over time**, to four decimal places.
-Calculation result is displayed up to two decimal place
+Exchange rates are taken from the **European Central Bank** and updated every working day.
+
+Currency exchange rates have four decimal places.
+The calculation result is displayed with an accuracy of two decimal places
 
 ## Languages
  - HTML
  - CSS
  - BEM convention
  - Flex, Grid
+ - Responsive Web Design
+ - Styled components
  - JavaScript
  - ES6+ features
  - React.js
  - React Hooks: useState, useEffect, useRef, own Reaact Hooks
- - Styled components
+ - Work with API (axios) async/await
 ## Available Scripts
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
