@@ -27,8 +27,13 @@ export const useCurrenciesData = () => {
                         rate: rates[k],
                     }
                 )));
-            setMessage("Pobieranie danych zakończone powodzeniem. Trwa ładowanie aplikacji...");
-            setStatus(true);
+            if(Object.keys(rates).length===0){
+                setMessage("Nie udało się pobrać danych z serwera. Spróbuj ponownie później.");
+                setStatus(false);
+            }else{
+                setMessage("Pobieranie danych zakończone powodzeniem. Trwa ładowanie aplikacji...");
+                setStatus(true);
+            }
         })();
     }, []);
 

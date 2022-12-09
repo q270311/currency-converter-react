@@ -7,7 +7,6 @@ const Form = ({ currencies }) => {
     const [outputCurrencySymbol, setOutputCurrencySymbol] = useState(currencies[1].short);
     const [currencyValue, setCurrencyValue] = useState("");
     const [result, setResult] = useState("");
-
     const inputCurrencyRate = currencies.find(({ short }) => short === inputCurrencySymbol).rate;
     const outputCurrencyRate = currencies.find(({ short }) => short === outputCurrencySymbol).rate;
 
